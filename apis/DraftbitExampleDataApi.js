@@ -9,18 +9,10 @@ import useFetch from 'react-fetch-hook';
 import { useIsFocused } from '@react-navigation/native';
 import * as GlobalVariables from '../config/GlobalVariableContext';
 
-export const gETTop3ProductsByBrandGET = (Constants, { brand }) =>
-  fetch(
-    `https://example-data.draftbit.com/products?_order=desc&_sort=average_product_rating&_limit=3&brand=${
-      brand || ''
-    }`,
-    {
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-    }
-  )
+export const peopleGET = Constants =>
+  fetch(`https://example-data.draftbit.com/people?_limit=10`, {
+    headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+  })
     .then(res => {
       if (!res.ok) {
         console.error('Fetch error: ' + res.status + ' ' + res.statusText);
@@ -29,29 +21,17 @@ export const gETTop3ProductsByBrandGET = (Constants, { brand }) =>
     })
     .then(res => res.json());
 
-export const useGETTop3ProductsByBrandGET = ({ brand }) => {
+export const usePeopleGET = () => {
   const Constants = GlobalVariables.useValues();
   const isFocused = useIsFocused();
 
-  return useFetch(
-    `https://example-data.draftbit.com/products?_order=desc&_sort=average_product_rating&_limit=3&brand=${
-      brand || ''
-    }`,
-    {
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      depends: [isFocused],
-    }
-  );
+  return useFetch(`https://example-data.draftbit.com/people?_limit=10`, {
+    headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+    depends: [isFocused],
+  });
 };
 
-export const FetchGETTop3ProductsByBrandGET = ({
-  children,
-  onData = () => {},
-  brand,
-}) => {
+export const FetchPeopleGET = ({ children, onData = () => {} }) => {
   const Constants = GlobalVariables.useValues();
   const isFocused = useIsFocused();
 
@@ -59,18 +39,10 @@ export const FetchGETTop3ProductsByBrandGET = ({
     isLoading: loading,
     data,
     error,
-  } = useFetch(
-    `https://example-data.draftbit.com/products?_order=desc&_sort=average_product_rating&_limit=3&brand=${
-      brand || ''
-    }`,
-    {
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      depends: [isFocused],
-    }
-  );
+  } = useFetch(`https://example-data.draftbit.com/people?_limit=10`, {
+    headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+    depends: [isFocused],
+  });
 
   React.useEffect(() => {
     if (error) {

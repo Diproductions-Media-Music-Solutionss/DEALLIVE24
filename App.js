@@ -12,13 +12,20 @@ import DraftbitTheme from './themes/DraftbitTheme.js';
 import cacheAssetsAsync from './config/cacheAssetsAsync';
 import { GlobalVariableProvider } from './config/GlobalVariableContext';
 import { useFonts } from 'expo-font';
+import { Alata_400Regular } from '@expo-google-fonts/alata';
 import { AlfaSlabOne_400Regular } from '@expo-google-fonts/alfa-slab-one';
+import { Allerta_400Regular } from '@expo-google-fonts/allerta';
 
 const queryClient = new QueryClient();
 
 const App = () => {
   const [isReady, setIsReady] = React.useState(false);
-  const [fontsLoaded] = useFonts({ AlfaSlabOne_400Regular });
+  const [fontsLoaded] = useFonts({
+    Alata_400Regular,
+    AlfaSlabOne_400Regular,
+    AlfaSlabOne_400Regular,
+    Allerta_400Regular,
+  });
 
   if (!isReady || !fontsLoaded) {
     return (

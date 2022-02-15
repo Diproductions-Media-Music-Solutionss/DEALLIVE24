@@ -33,7 +33,7 @@ const SimpleWelcomeScreen = props => {
           <ButtonSolid
             onPress={() => {
               try {
-                navigation.navigate('BasicLoginScreen');
+                navigation.navigate('SignUpscreeenScreen');
               } catch (err) {
                 console.error(err);
               }

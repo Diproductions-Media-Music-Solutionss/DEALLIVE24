@@ -1,5 +1,4 @@
 import React from 'react';
-import * as DraftbitExampleDataApi from '../apis/DraftbitExampleDataApi.js';
 import Images from '../config/Images';
 import {
   Button,
@@ -10,9 +9,7 @@ import {
   Touchable,
   withTheme,
 } from '@draftbit/ui';
-import { useIsFocused } from '@react-navigation/native';
 import {
-  ActivityIndicator,
   FlatList,
   Image,
   KeyboardAvoidingView,
@@ -24,7 +21,6 @@ import { Fetch } from 'react-request';
 
 const StoreProfileScreen = props => {
   const { theme } = props;
-  const { navigation } = props;
 
   return (
     <ScreenContainer scrollable={true} hasSafeArea={true}>
@@ -36,13 +32,6 @@ const StoreProfileScreen = props => {
       >
         <View style={styles.Viewce} pointerEvents={'auto'}>
           <IconButton
-            onPress={() => {
-              try {
-                navigation.navigate('AppSettingsScreen');
-              } catch (err) {
-                console.error(err);
-              }
-            }}
             icon={'Ionicons/ios-chevron-back-outline'}
             size={32}
             color={theme.colors.strong}
@@ -145,134 +134,114 @@ const StoreProfileScreen = props => {
               </Text>
             </Touchable>
           </View>
-
-          <DraftbitExampleDataApi.FetchGETTop3ProductsByBrandGET brand={'Nike'}>
-            {({ loading, error, data, doFetch }) => {
-              const fetchData = data;
-              if (!fetchData || loading) {
-                return <ActivityIndicator />;
-              }
-
-              if (error) {
-                return (
-                  <Text style={{ textAlign: 'center' }}>
-                    There was a problem fetching this data
-                  </Text>
-                );
-              }
-
+          <FlatList
+            data={data}
+            renderItem={({ item }) => {
+              const listData = item;
               return (
-                <FlatList
-                  data={data}
-                  renderItem={({ item }) => {
-                    const listData = item;
-                    return (
-                      <Touchable>
-                        <View style={styles.ViewbO}>
-                          <View style={styles.ViewMk}>
-                            <View style={styles.View_4p}>
-                              <Image
-                                style={styles.Imagegc}
-                                resizeMode={'contain'}
-                                source={{ uri: item['image_url'] }}
-                              />
-                            </View>
-
-                            <View style={styles.ViewqO}>
-                              <Text
-                                style={[
-                                  theme.typography.headline6,
-                                  { color: theme.colors.strong },
-                                ]}
-                                allowFontScaling={true}
-                                textBreakStrategy={'highQuality'}
-                                ellipsizeMode={'tail'}
-                              >
-                                {item && item['name']}
-                              </Text>
-
-                              <View style={styles.ViewCA}>
-                                <Text
-                                  style={[
-                                    theme.typography.subtitle1,
-                                    { color: theme.colors.medium },
-                                  ]}
-                                >
-                                  {'$'}
-                                </Text>
-
-                                <Text
-                                  style={[
-                                    theme.typography.subtitle1,
-                                    { color: theme.colors.medium },
-                                  ]}
-                                  allowFontScaling={true}
-                                  ellipsizeMode={'tail'}
-                                  textBreakStrategy={'highQuality'}
-                                >
-                                  {item && item['sale_price']}
-                                </Text>
-
-                                <Text
-                                  style={[
-                                    theme.typography.subtitle1,
-                                    styles.TextX1,
-                                    { color: theme.colors.light },
-                                  ]}
-                                >
-                                  {'$'}
-                                </Text>
-
-                                <Text
-                                  style={[
-                                    theme.typography.subtitle1,
-                                    styles.TextNv,
-                                    { color: theme.colors.light },
-                                  ]}
-                                  textBreakStrategy={'highQuality'}
-                                  ellipsizeMode={'tail'}
-                                  allowFontScaling={true}
-                                >
-                                  {item && item['list_price']}
-                                </Text>
-                              </View>
-
-                              <View style={styles.ViewDU}>
-                                <Text
-                                  style={[
-                                    theme.typography.subtitle2,
-                                    styles.TextSc,
-                                    { color: theme.colors.medium },
-                                  ]}
-                                  ellipsizeMode={'tail'}
-                                  allowFontScaling={true}
-                                  textBreakStrategy={'highQuality'}
-                                >
-                                  {listData?.description}
-                                </Text>
-                              </View>
-                            </View>
-                          </View>
-                          <Icon
-                            style={styles.IconuW}
-                            color={theme.colors.strong}
-                            name={'AntDesign/right'}
-                            size={24}
-                          />
-                        </View>
-                        <Divider
-                          style={styles.DividerbW}
-                          height={1}
-                          color={theme.colors.divider}
+                <Touchable>
+                  <View style={styles.ViewbO}>
+                    <View style={styles.ViewMk}>
+                      <View style={styles.View_4p}>
+                        <Image
+                          style={styles.Imagegc}
+                          resizeMode={'contain'}
+                          source={{ uri: item['image_url'] }}
                         />
-                      </Touchable>
-                    );
-                  }}
-                  data={data}
-                />
+                      </View>
+
+                      <View style={styles.ViewqO}>
+                        <Text
+                          style={[
+                            theme.typography.headline6,
+                            { color: theme.colors.strong },
+                          ]}
+                          allowFontScaling={true}
+                          textBreakStrategy={'highQuality'}
+                          ellipsizeMode={'tail'}
+                        >
+                          {item && item['name']}
+                        </Text>
+
+                        <View style={styles.ViewCA}>
+                          <Text
+                            style={[
+                              theme.typography.subtitle1,
+                              { color: theme.colors.medium },
+                            ]}
+                          >
+                            {'$'}
+                          </Text>
+
+                          <Text
+                            style={[
+                              theme.typography.subtitle1,
+                              { color: theme.colors.medium },
+                            ]}
+                            allowFontScaling={true}
+                            ellipsizeMode={'tail'}
+                            textBreakStrategy={'highQuality'}
+                          >
+                            {item && item['sale_price']}
+                          </Text>
+
+                          <Text
+                            style={[
+                              theme.typography.subtitle1,
+                              styles.TextX1,
+                              { color: theme.colors.light },
+                            ]}
+                          >
+                            {'$'}
+                          </Text>
+
+                          <Text
+                            style={[
+                              theme.typography.subtitle1,
+                              styles.TextNv,
+                              { color: theme.colors.light },
+                            ]}
+                            textBreakStrategy={'highQuality'}
+                            ellipsizeMode={'tail'}
+                            allowFontScaling={true}
+                          >
+                            {item && item['list_price']}
+                          </Text>
+                        </View>
+
+                        <View style={styles.ViewDU}>
+                          <Text
+                            style={[
+                              theme.typography.subtitle2,
+                              styles.TextSc,
+                              { color: theme.colors.medium },
+                            ]}
+                            ellipsizeMode={'tail'}
+                            allowFontScaling={true}
+                            textBreakStrategy={'highQuality'}
+                          >
+                            {listData?.description}
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                    <Icon
+                      style={styles.IconuW}
+                      color={theme.colors.strong}
+                      name={'AntDesign/right'}
+                      size={24}
+                    />
+                  </View>
+                  <Divider
+                    style={styles.DividerbW}
+                    height={1}
+                    color={theme.colors.divider}
+                  />
+                </Touchable>
               );
             }}
-          </DraftbitExampleDataApi.FetchGETTop3ProductsByBrandGET>
+            data={data}
+          />
         </View>
 
         <View style={styles.Viewdx}>

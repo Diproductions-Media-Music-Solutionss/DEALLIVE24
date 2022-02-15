@@ -3,6 +3,7 @@ import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
 import {
   AntDesign,
+  Feather,
   FontAwesome,
   Ionicons,
   MaterialCommunityIcons,
@@ -29,6 +30,7 @@ export default function cacheAssetsAsync() {
   const imageAssets = cacheImages(Object.values(IMAGES));
   const iconAssets = cacheFonts([
     AntDesign.font,
+    Feather.font,
     FontAwesome.font,
     Ionicons.font,
     MaterialCommunityIcons.font,

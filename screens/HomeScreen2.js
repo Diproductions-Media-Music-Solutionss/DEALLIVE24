@@ -41,13 +41,6 @@ const HomeScreen2 = props => {
           pointerEvents={'auto'}
         >
           <IconButton
-            onPress={() => {
-              try {
-                navigation.navigate('AppSettingsScreen');
-              } catch (err) {
-                console.error(err);
-              }
-            }}
             icon={'AntDesign/menuunfold'}
             size={32}
             color={theme.colors.surface}

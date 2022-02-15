@@ -8,15 +8,19 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import theme from './themes/DraftbitTheme.js';
 import LinkingConfiguration from './LinkingConfiguration.js';
 
-import AppSettingsScreen from './screens/AppSettingsScreen';
-import BasicLoginScreen from './screens/BasicLoginScreen';
+import AccountProfileScreen from './screens/AccountProfileScreen';
 import EmailPasswordLoginScreen from './screens/EmailPasswordLoginScreen';
 import ForgotpasswordscreenScreen from './screens/ForgotpasswordscreenScreen';
 import HOMESCREENScreen from './screens/HOMESCREENScreen';
 import HomeScreen2 from './screens/HomeScreen2';
+import NewsFeedScreen from './screens/NewsFeedScreen';
 import NotificationPermissionsScreen from './screens/NotificationPermissionsScreen';
 import NotificationPreferencesScreen from './screens/NotificationPreferencesScreen';
+import ProductDetailsScreen from './screens/ProductDetailsScreen';
+import ProspectiveHomeScreen from './screens/ProspectiveHomeScreen';
 import SMSAuthConfirmationScreen from './screens/SMSAuthConfirmationScreen';
+import SettingsScreen from './screens/SettingsScreen';
+import SignUpscreeenScreen from './screens/SignUpscreeenScreen';
 import SimpleWelcomeScreen from './screens/SimpleWelcomeScreen';
 import StoreProfileScreen from './screens/StoreProfileScreen';
 
@@ -62,6 +66,74 @@ function Placeholder() {
     </View>
   );
 }
+function BottomTabNavigator() {
+  return (
+    <Tab.Navigator
+      initialRouteName="ProspectiveHomeScreen"
+      tabBarOptions={{
+        showLabel: false,
+      }}
+    >
+      <Tab.Screen
+        name="ProspectiveHomeScreen"
+        component={ProspectiveHomeScreen}
+        options={{
+          title: 'Prospective HomeScreen',
+          tabBarIcon: ({ focused, color }) => (
+            <Icon
+              name="AntDesign/home"
+              size={25}
+              color={focused ? theme.colors.custom_rgb255_165_0 : color}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="SettingsScreen"
+        component={SettingsScreen}
+        options={{
+          title: 'Settings',
+          tabBarIcon: ({ focused, color }) => (
+            <Icon
+              name="AntDesign/setting"
+              size={25}
+              color={focused ? theme.colors.custom_rgb255_165_0 : color}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="NewsFeedScreen"
+        component={NewsFeedScreen}
+        options={{
+          title: 'News Feed',
+          tabBarIcon: ({ focused, color }) => (
+            <Icon
+              name="FontAwesome/feed"
+              size={25}
+              color={focused ? theme.colors.custom_rgb255_165_0 : color}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="AccountProfileScreen"
+        component={AccountProfileScreen}
+        options={{
+          title: 'Account Profile',
+          tabBarIcon: ({ focused, color }) => (
+            <Icon
+              name="MaterialCommunityIcons/account-check-outline"
+              size={25}
+              color={focused ? theme.colors.custom_rgb255_165_0 : color}
+            />
+          ),
+        }}
+      />
+    </Tab.Navigator>
+  );
+}
+
 export default function RootAppNavigator() {
   return (
     <NavigationContainer linking={LinkingConfiguration}>
@@ -80,12 +152,7 @@ export default function RootAppNavigator() {
         <Stack.Screen
           name="HOMESCREENScreen"
           component={HOMESCREENScreen}
-          options={{
-            headerTransparent: false,
-            gestureEnabled: false,
-            animationEnabled: true,
-            title: 'HOMESCREEN',
-          }}
+          options={{ title: 'HOMESCREEN' }}
         />
         <Stack.Screen
           name="EmailPasswordLoginScreen"
@@ -101,11 +168,6 @@ export default function RootAppNavigator() {
           name="HomeScreen2"
           component={HomeScreen2}
           options={{ title: 'HomeScreen2' }}
-        />
-        <Stack.Screen
-          name="AppSettingsScreen"
-          component={AppSettingsScreen}
-          options={{ title: 'App Settings' }}
         />
         <Stack.Screen
           name="StoreProfileScreen"
@@ -133,9 +195,18 @@ export default function RootAppNavigator() {
           options={{ title: 'Simple Welcome' }}
         />
         <Stack.Screen
-          name="BasicLoginScreen"
-          component={BasicLoginScreen}
-          options={{ title: 'Basic Login' }}
+          name="SignUpscreeenScreen"
+          component={SignUpscreeenScreen}
+          options={{ title: 'SignUp screeen' }}
+        />
+        <Stack.Screen
+          name="ProductDetailsScreen"
+          component={ProductDetailsScreen}
+          options={{ title: 'Product Details Screen ' }}
+        />
+        <Stack.Screen
+          name="BottomTabNavigator"
+          component={BottomTabNavigator}
         />
       </Stack.Navigator>
     </NavigationContainer>

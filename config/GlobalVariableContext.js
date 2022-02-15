@@ -3,8 +3,8 @@ import { View, ActivityIndicator } from 'react-native';
 import AppLoading from 'expo-app-loading';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const DeviceVariables = {};
-const AppVariables = {};
+const DeviceVariables = { AUTH_HEADER: '' };
+const AppVariables = { ERROR_MESSAGE: '' };
 const GlobalVariableContext = React.createContext();
 const GlobalVariableUpdater = React.createContext();
 

@@ -4,7 +4,6 @@ import { KeyboardAvoidingView, StyleSheet, Text, View } from 'react-native';
 
 const SMSAuthConfirmationScreen = props => {
   const { theme } = props;
-  const { navigation } = props;
 
   const [confirmationCodeValue, setConfirmationCodeValue] = React.useState('');
 
@@ -56,13 +55,6 @@ const SMSAuthConfirmationScreen = props => {
 
         <View style={styles.ViewHq}>
           <Button
-            onPress={() => {
-              try {
-                navigation.navigate('HomeScreen2');
-              } catch (err) {
-                console.error(err);
-              }
-            }}
             style={[styles.Button_1p, { borderRadius: 36 }]}
             type={'solid'}
             color={theme.colors.custom_rgb255_165_0}

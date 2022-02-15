@@ -10,7 +10,6 @@ import { StyleSheet, Text, View } from 'react-native';
 
 const NotificationPreferencesScreen = props => {
   const { theme } = props;
-  const { navigation } = props;
 
   return (
     <ScreenContainer scrollable={true} hasSafeArea={true}>
@@ -185,13 +184,6 @@ const NotificationPreferencesScreen = props => {
 
       <View style={styles.ViewnN} pointerEvents={'auto'}>
         <Link
-          onPress={() => {
-            try {
-              navigation.navigate('AppSettingsScreen');
-            } catch (err) {
-              console.error(err);
-            }
-          }}
           style={[styles.LinkhY, { color: theme.colors.custom_rgb255_165_0 }]}
           title={'Done'}
         />

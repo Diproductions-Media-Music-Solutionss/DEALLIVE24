@@ -17,7 +17,11 @@ const prefix = renderLinkingPrefix();
 const linking = {
   prefixes: [prefix],
   config: {
-    screens: {},
+    screens: {
+      BottomTabNavigator: {
+        screens: {},
+      },
+    },
   },
 };
 

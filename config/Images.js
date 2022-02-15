@@ -10,4 +10,7 @@ export default {
   ProfilePlaceholder: require('../assets/images/ProfilePlaceholder.png'),
   PermissionsNotification: require('../assets/images/PermissionsNotification.png'),
   Sky: require('../assets/images/Sky.jpg'),
+  Guac: require('../assets/images/Guac.jpg'),
+  DraftbitIcon: require('../assets/images/DraftbitIcon.png'),
+  DraftbitTeamPhoto: require('../assets/images/DraftbitTeamPhoto.jpg'),
 };
