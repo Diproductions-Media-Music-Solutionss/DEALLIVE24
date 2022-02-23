@@ -1,6 +1,4 @@
 import React from 'react';
-import * as XanoApi from '../apis/XanoApi.js';
-import * as GlobalVariables from '../config/GlobalVariableContext';
 import {
   ButtonSolid,
   ScreenContainer,
@@ -17,11 +15,6 @@ import {
 } from 'react-native';
 
 const SignUpscreeenScreen = props => {
-  const Constants = GlobalVariables.useValues();
-  const Variables = Constants;
-
-  const setGlobalVariableValue = GlobalVariables.useSetValue();
-
   const { theme } = props;
   const { navigation } = props;
 
@@ -123,23 +116,8 @@ const SignUpscreeenScreen = props => {
 
         <View pointerEvents={'auto'}>
           <ButtonSolid
-            onPress={async () => {
+            onPress={() => {
               try {
-                const signUpResponse2 = await XanoApi.signUpPOST(Constants, {
-                  signupEmail: email,
-                  signupName: Name,
-                  signupPassword: password,
-                });
-                const authToken = signUpResponse2.authToken;
-                const errorMessage = signUpResponse2.message;
-                setGlobalVariableValue({
-                  key: 'ERROR_MESSAGE',
-                  value: errorMessage,
-                });
-                setGlobalVariableValue({
-                  key: 'AUTH_HEADER',
-                  value: 'Bearer ' + authToken,
-                });
                 navigation.navigate('BottomTabNavigator', {
                   screen: 'ProspectiveHomeScreen',
                 });

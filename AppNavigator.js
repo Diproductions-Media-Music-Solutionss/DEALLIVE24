@@ -6,9 +6,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import theme from './themes/DraftbitTheme.js';
-import LinkingConfiguration from './LinkingConfiguration.js';
 
 import AccountProfileScreen from './screens/AccountProfileScreen';
+import CategoriesScreen from './screens/CategoriesScreen';
 import EmailPasswordLoginScreen from './screens/EmailPasswordLoginScreen';
 import ForgotpasswordscreenScreen from './screens/ForgotpasswordscreenScreen';
 import HOMESCREENScreen from './screens/HOMESCREENScreen';
@@ -136,7 +136,7 @@ function BottomTabNavigator() {
 
 export default function RootAppNavigator() {
   return (
-    <NavigationContainer linking={LinkingConfiguration}>
+    <NavigationContainer>
       <Stack.Navigator
         headerMode="none"
         initialRouteName="SimpleWelcomeScreen"
@@ -203,6 +203,11 @@ export default function RootAppNavigator() {
           name="ProductDetailsScreen"
           component={ProductDetailsScreen}
           options={{ title: 'Product Details Screen ' }}
+        />
+        <Stack.Screen
+          name="CategoriesScreen"
+          component={CategoriesScreen}
+          options={{ title: 'Categories Screen' }}
         />
         <Stack.Screen
           name="BottomTabNavigator"

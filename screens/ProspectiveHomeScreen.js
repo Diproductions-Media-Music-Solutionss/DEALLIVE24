@@ -30,16 +30,15 @@ const ProspectiveHomeScreen = props => {
       <Spacer top={12} right={0} bottom={12} left={0}>
         <View style={styles.Viewe5} pointerEvents={'auto'}>
           <View style={styles.ViewsC} pointerEvents={'auto'}>
-            <Text style={{ color: theme.colors.strong }}>{'Login'}</Text>
             <IconButton
               onPress={() => {
                 try {
-                  navigation.navigate('EmailPasswordLoginScreen');
+                  navigation.navigate('CategoriesScreen');
                 } catch (err) {
                   console.error(err);
                 }
               }}
-              icon={'Ionicons/person-outline'}
+              icon={'Ionicons/menu-sharp'}
               size={32}
               color={theme.colors.custom_rgb255_165_0}
             />

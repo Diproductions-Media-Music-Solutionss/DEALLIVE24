@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button, ScreenContainer, Touchable, withTheme } from '@draftbit/ui';
-import { useIsFocused } from '@react-navigation/native';
 import {
   Image,
   KeyboardAvoidingView,
@@ -13,18 +12,6 @@ import {
 const EmailPasswordLoginScreen = props => {
   const { theme } = props;
   const { navigation } = props;
-
-  const isFocused = useIsFocused();
-  React.useEffect(() => {
-    try {
-      if (!isFocused) {
-        return;
-      }
-      navigation.navigate('RootNavigator');
-    } catch (err) {
-      console.error(err);
-    }
-  }, [isFocused]);
 
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -98,7 +85,9 @@ const EmailPasswordLoginScreen = props => {
           <Button
             onPress={() => {
               try {
-                navigation.navigate('BottomTabNavigator');
+                navigation.navigate('BottomTabNavigator', {
+                  screen: 'ProspectiveHomeScreen',
+                });
               } catch (err) {
                 console.error(err);
               }
